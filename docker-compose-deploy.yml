@@ -1,0 +1,39 @@
+version: '3.7'
+services:
+    quizoo:
+        build:
+            context: .
+        restart: always
+        volumes:
+            - static_data:/vol/web
+        environment:
+            - SECRET_KEY=8ahn89dub6$ak#5c(m--#m7vqzhfhvm5h+uq05t@mx*j9n(j8*
+            - DEBUG=0
+            - EMAIL_HOST_USER=ctrlalteliteshi2020@gmail.com
+            - EMAIL_HOST_PASSWORD=passwordispassword
+            - AM_I_IN_A_DOCKER_CONTAINER=1
+        links:
+            - redis:redis
+    proxy:
+        build:
+            context: ./proxy
+        volumes:
+            - static_data:/vol/static
+        ports:
+            - "80:80"
+        depends_on: 
+            - quizoo
+
+    redis:
+        restart: always
+        image: redis:latest
+        expose:
+            - "6379"
+
+     
+volumes:
+    static_data:
+                
+
+
+
