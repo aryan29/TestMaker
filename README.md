@@ -59,7 +59,6 @@ It makes use of Redis for storing session on backend
 ```
 git clone https://github.com/aryan29/Quizoo.git    
 cd Quizoo    
-git checkout dev  
 virtualenv venv
 source venv/bin/activate
 pip install -r requirements.txt
@@ -69,8 +68,7 @@ python manage.py runserver
 ##### Nginx Deployment Server
 ```
 git clone https://github.com/aryan29/Quizoo.git    
-cd Quizoo    
-git checkout dev    
+cd Quizoo     
 sudo docker-compose -f docker-compose-deploy.yml up --build  
 ```  
 
